@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function SearchBar({ searchResult }) {
   const [userInput, setUserInput] = useState("");
@@ -9,14 +10,10 @@ function SearchBar({ searchResult }) {
   const onSubmit = (event) => {
     event.preventDefault();
     searchResult(userInput);
-
-    //To Do
-    //
-    //  GO to.... ----> Search Recipe Page
   };
 
   return (
-    <div id="Search">
+    <div id="Search" className="App">
       <h2>Already Decided?</h2>
       <form onSubmit={onSubmit}>
         <input
@@ -24,7 +21,9 @@ function SearchBar({ searchResult }) {
           onChange={onUserInputChange}
           value={userInput}
         ></input>
-        <input type="submit"></input>
+        <Link to="/search">
+          <input type="submit"></input>
+        </Link>
       </form>
     </div>
   );

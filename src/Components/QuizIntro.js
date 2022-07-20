@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet, Link } from "react-router-dom";
 
 function QuizIntro() {
   const onQuizClick = () => {
@@ -6,10 +7,12 @@ function QuizIntro() {
     // Go to... ---> Quiz Page
   };
   return (
-    <div>
+    <div className="App" id="Quiz">
       <h2>Can't Decide..?</h2>
       <p>Find your new favorite recipe</p>
-      <input type="button" value="Quiz"></input>
+      <Link to="/quiz">
+        <input type="button" value="Quiz"></input>
+      </Link>
     </div>
   );
 }

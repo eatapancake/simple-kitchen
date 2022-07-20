@@ -1,9 +1,11 @@
 import React from "react";
 import imgPlaceholder from "../images/img-placeholder.jpg";
 import Carousel from "react-elastic-carousel";
+import { Link } from "react-router-dom";
 
 function FoodPreview({ title = "Chicken", foodCategory = true }) {
-  let titleQuestion = "";
+  let titleQuestion = "Art thou Craving...";
+  let id = "na";
 
   const breakPoints = [{ width: 1000, itemsToShow: 2.5 }];
   const recipeArr = [
@@ -29,9 +31,10 @@ function FoodPreview({ title = "Chicken", foodCategory = true }) {
     },
   ];
 
-  foodCategory
-    ? (titleQuestion = "In the Mood for...")
-    : (titleQuestion = "Art thou Craving...");
+  if (foodCategory) {
+    titleQuestion = "In the Mood for...";
+    id = "Browse";
+  }
   const pageTitle = (
     <div>
       <h2>{titleQuestion} </h2>
@@ -55,7 +58,7 @@ function FoodPreview({ title = "Chicken", foodCategory = true }) {
   //Clicking on Picture ----> new Website
 
   return (
-    <div>
+    <div id={id} className="App">
       {pageTitle}
 
       <Carousel breakPoints={breakPoints}>
@@ -64,7 +67,9 @@ function FoodPreview({ title = "Chicken", foodCategory = true }) {
         ))}
       </Carousel>
       <br />
-      <button>Browse Something Else</button>
+      <Link to="/browse">
+        <button>Browse Something Else</button>
+      </Link>
     </div>
   );
 }

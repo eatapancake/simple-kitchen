@@ -1,11 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div>
+    <div className="App">
       <h1>Simple Kitchen</h1>
       <span>
-        <a>Quiz</a> | <a>Browse</a> | <a href="#Search">Search</a>
+        <Link to="/">Home</Link> | <Link to="/quiz">Quiz</Link> |{" "}
+        <Link to="/browse">Browse</Link> | <Link to="/search">Search</Link>
       </span>
     </div>
   );
