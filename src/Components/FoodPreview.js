@@ -5,7 +5,7 @@ import Carousel from "react-elastic-carousel";
 function FoodPreview({ title = "Chicken", foodCategory = true }) {
   let titleQuestion = "";
 
-  const breakPoints = [{ itemsToShow: 2.5 }];
+  const breakPoints = [{ width: 1000, itemsToShow: 2.5 }];
   const recipeArr = [
     {
       imgSrc: imgPlaceholder,
@@ -39,6 +39,20 @@ function FoodPreview({ title = "Chicken", foodCategory = true }) {
       {/* recipes here */}
     </div>
   );
+  const FoodCard = ({ item }) => {
+    return (
+      <div>
+        <div style={{ width: "300px", overflow: "hidden", margin: "10px" }}>
+          <img height="250" alt={item.title} src={item.imgSrc} />
+        </div>
+        <p>{item.title}</p>
+      </div>
+    );
+  };
+
+  //TO-DO
+  //
+  //Clicking on Picture ----> new Website
 
   return (
     <div>
@@ -46,23 +60,9 @@ function FoodPreview({ title = "Chicken", foodCategory = true }) {
 
       <Carousel breakPoints={breakPoints}>
         {recipeArr.map((item, index) => (
-          <div
-            key={index}
-            style={{
-              width: "300px",
-              overflow: "hidden",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              margin: "10px",
-            }}
-          >
-            <img height="250" alt={item.title} src={item.imgSrc} />
-            <p>{item.title}</p>
-          </div>
+          <FoodCard item={item} key={index} />
         ))}
       </Carousel>
-
       <br />
       <button>Browse Something Else</button>
     </div>
