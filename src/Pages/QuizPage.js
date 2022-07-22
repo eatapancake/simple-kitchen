@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import QuizGame from "../Components/QuizGame";
 
 function QuizPage() {
   return (
-    <div>
-      <h2>Quiz Page</h2>
-      <form>
-        <p>Questions Here...</p>
-      </form>
+    <div className="App">
+      <QuizGame />
     </div>
   );
 }
