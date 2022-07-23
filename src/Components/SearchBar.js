@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function SearchBar({ searchResult }) {
+function SearchBar({ searchResult, header = "Already Decided?" }) {
   const [userInput, setUserInput] = useState("");
   const onUserInputChange = (event) => {
     setUserInput(event.target.value);
@@ -14,7 +14,7 @@ function SearchBar({ searchResult }) {
 
   return (
     <div id="Search" className="App">
-      <h2>Already Decided?</h2>
+      <h2>{header}</h2>
       <form onSubmit={onSubmit}>
         <input
           placeholder="Find your recipe here"
