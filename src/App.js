@@ -9,6 +9,7 @@ import QuizPage from "./Pages/QuizPage";
 import BrowsePage from "./Pages/BrowsePage";
 import SearchPage from "./Pages/SearchPage";
 import RecipePage from "./Pages/RecipePage";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
