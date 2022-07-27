@@ -39,6 +39,11 @@ function useRecipeSearch(slug) {
           data: decode(json.meals),
         });
       } catch {
+        setRecipeFetch({
+          isLoading: false,
+          errorMessage: "Recipe not Found. Please try something else.",
+          data: null,
+        });
         console.log("Something went Wrong");
       }
     }

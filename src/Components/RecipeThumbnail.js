@@ -5,7 +5,7 @@ function RecipeThumbnail({ data }) {
   return (
     <div>
       {data.map((item) => (
-        <div>
+        <div key={item.name}>
           <Link to={`/recipe/${item.id}`}>
             <img width="200px" src={item.image} alt={item.name}></img>
             <h3>{item.name}</h3>

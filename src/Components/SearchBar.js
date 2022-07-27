@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 function SearchBar({ searchResult, header = "Already Decided?" }) {
   const [userInput, setUserInput] = useState("");
   const navigate = useNavigate();
-
   const onUserInputChange = (event) => {
     setUserInput(event.target.value);
   };
@@ -14,7 +13,8 @@ function SearchBar({ searchResult, header = "Already Decided?" }) {
     // searchResult(userInput);
     // setUserInput("cow");
     navigate(`/search/${userInput}`);
-    console.log("hello");
+
+    console.log("search bar...");
   };
 
   return (
@@ -27,7 +27,7 @@ function SearchBar({ searchResult, header = "Already Decided?" }) {
           value={userInput}
         ></input>
 
-        <input type="submit"></input>
+        <input type="submit" value="Search"></input>
       </form>
     </div>
   );
