@@ -29,8 +29,10 @@ function App() {
         ></Route>
         <Route path="/quiz" element={<QuizPage />}></Route>
         <Route path="/search" element={<SearchPage />}></Route>
+        <Route path="/search/:slug" element={<SearchPage />}></Route>
         <Route path="/browse" element={<BrowsePage />}></Route>
         <Route path="/recipe" element={<RecipePage />}></Route>
+        <Route path="/recipe/:id" element={<RecipePage />}></Route>
       </Routes>
     </BrowserRouter>
   );

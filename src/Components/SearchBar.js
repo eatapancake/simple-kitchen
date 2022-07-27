@@ -1,15 +1,20 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SearchBar({ searchResult, header = "Already Decided?" }) {
   const [userInput, setUserInput] = useState("");
+  const navigate = useNavigate();
+
   const onUserInputChange = (event) => {
     setUserInput(event.target.value);
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    searchResult(userInput);
+    // searchResult(userInput);
+    // setUserInput("cow");
+    navigate(`/search/${userInput}`);
+    console.log("hello");
   };
 
   return (
@@ -21,9 +26,8 @@ function SearchBar({ searchResult, header = "Already Decided?" }) {
           onChange={onUserInputChange}
           value={userInput}
         ></input>
-        <Link to="/search">
-          <input type="submit"></input>
-        </Link>
+
+        <input type="submit"></input>
       </form>
     </div>
   );
