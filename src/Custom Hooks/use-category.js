@@ -43,7 +43,7 @@ function useCategory(category, filterBy) {
     return () => {
       //   isCancelled = true;
     };
-  }, []);
+  }, [category]);
 
   const { isLoading, errorMessage, data } = fetchCategory;
   return [isLoading, errorMessage, data];
