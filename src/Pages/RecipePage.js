@@ -7,7 +7,7 @@ function RecipePage() {
   const id = useParams();
 
   const [isLoading, errorMessage, data] = useRecipeDetail(id);
-  console.log(data);
+  // console.log(data);
   return (
     <div className="App">
       {/* <h2> Recipe Page</h2>

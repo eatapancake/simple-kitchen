@@ -3,33 +3,37 @@ import imgPlaceholder from "../images/img-placeholder.jpg";
 import Carousel from "react-elastic-carousel";
 import { Link } from "react-router-dom";
 
-function FoodPreview({ title = "Chicken", foodCategory = true }) {
+function FoodPreview({
+  title = "Chicken",
+  foodCategory = true,
+  data = [{ name: "cheese", image: "none" }],
+}) {
   let titleQuestion = "Art thou Craving...";
   let id = "na";
 
   const breakPoints = [{ width: 1000, itemsToShow: 2.5 }];
-  const recipeArr = [
-    {
-      imgSrc: imgPlaceholder,
-      link: "www.anyway.dont",
-      title: "Hamburger",
-    },
-    {
-      imgSrc: imgPlaceholder,
-      link: "www.anyway.dont",
-      title: "Hamburger",
-    },
-    {
-      imgSrc: imgPlaceholder,
-      link: "www.anyway.dont",
-      title: "Hamburger",
-    },
-    {
-      imgSrc: imgPlaceholder,
-      link: "www.anyway.dont",
-      title: "Hamburger",
-    },
-  ];
+  // const recipeArr = [
+  //   {
+  //     imgSrc: imgPlaceholder,
+  //     link: "www.anyway.dont",
+  //     title: "Hamburger",
+  //   },
+  //   {
+  //     imgSrc: imgPlaceholder,
+  //     link: "www.anyway.dont",
+  //     title: "Hamburger",
+  //   },
+  //   {
+  //     imgSrc: imgPlaceholder,
+  //     link: "www.anyway.dont",
+  //     title: "Hamburger",
+  //   },
+  //   {
+  //     imgSrc: imgPlaceholder,
+  //     link: "www.anyway.dont",
+  //     title: "Hamburger",
+  //   },
+  // ];
 
   if (foodCategory) {
     titleQuestion = "In the Mood for...";
@@ -44,11 +48,14 @@ function FoodPreview({ title = "Chicken", foodCategory = true }) {
   );
   const FoodCard = ({ item }) => {
     return (
-      <div>
+      <div key={item.id}>
+        {" "}
         <div style={{ width: "300px", overflow: "hidden", margin: "10px" }}>
-          <img height="250" alt={item.title} src={item.imgSrc} />
-        </div>
-        <p>{item.title}</p>
+          <Link to={`recipe/${item.id}`}>
+            <img height="250" alt={item.name} src={item.image} />
+          </Link>
+        </div>{" "}
+        <p>{item.name}</p>
       </div>
     );
   };
@@ -62,8 +69,10 @@ function FoodPreview({ title = "Chicken", foodCategory = true }) {
       {pageTitle}
 
       <Carousel breakPoints={breakPoints}>
-        {recipeArr.map((item, index) => (
-          <FoodCard item={item} key={index} />
+        {data.map((item, index) => (
+          <div key={index}>
+            <FoodCard item={item} />
+          </div>
         ))}
       </Carousel>
       <br />

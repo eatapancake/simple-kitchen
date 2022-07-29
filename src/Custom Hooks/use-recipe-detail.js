@@ -24,11 +24,6 @@ function useRecipeDetail({ id }) {
         image: results.strMealThumb,
         instructions: results.strInstructions,
 
-        //   ingredients: [
-        //     { name: item.strIngredient1, measure: item.strMeasure1 },
-        //     { name: item.strIngredient2, measure: item.strMeasure2 },
-        //     { name: item.strIngredient3, measure: item.strMeasure3 },
-        //   ],
         category: results.strCategory,
         ingredients: ingredientArr,
       };
