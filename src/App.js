@@ -27,7 +27,7 @@ function App() {
           exact
           element={<Home searchResult={searchResult} />}
         ></Route>
-        <Route path="/quiz" element={<QuizPage />}></Route>
+        {/* <Route path="/quiz" element={<QuizPage />}></Route> */}
         <Route path="/search" element={<SearchPage />}></Route>
         <Route path="/search/:slug" element={<SearchPage />}></Route>
         <Route path="/browse" element={<BrowsePage />}></Route>

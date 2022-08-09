@@ -37,7 +37,7 @@ function Home({ searchResult }) {
   return (
     <div>
       <SearchBar searchResult={searchResult} />
-      <QuizIntro />
+      {/* <QuizIntro /> */}
       {content}
     </div>
   );

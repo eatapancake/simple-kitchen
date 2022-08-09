@@ -1,23 +1,26 @@
 import { useEffect, useState } from "react";
 
-function useCategory(category, filterBy) {
+function useCategory(category, filterBy, page) {
   const [fetchCategory, setFetchCategory] = useState({
     isLoading: true,
     errorMessage: null,
     data: null,
+    isNext: false,
   });
 
   useEffect(() => {
+    let next = false;
     // let isCancelled = false;
 
     const decode = (result) => {
-      const decodedResult = result.slice(0, 4).map((item) => {
+      const decodedResult = result.slice(page, page + 4).map((item) => {
         return {
           name: item.strMeal,
           image: item.strMealThumb,
           id: item.idMeal,
         };
       });
+
       return decodedResult;
     };
     async function getCategory() {
@@ -29,10 +32,17 @@ function useCategory(category, filterBy) {
         // console.log(decode(json.meals));
         console.log("hi");
         // if (!isCancelled) {
+        console.log(json.meals.slice(page + 4, page + 5)[0]);
+        if (json.meals.slice(page + 4, page + 5)[0] === undefined) {
+          console.log("Stop");
+          next = true;
+        }
+
         setFetchCategory({
           isLoading: false,
           errorMessage: null,
           data: decode(json.meals),
+          isNext: next,
         });
         // }
       } catch {
@@ -43,10 +53,10 @@ function useCategory(category, filterBy) {
     return () => {
       //   isCancelled = true;
     };
-  }, [category]);
+  }, [category, page]);
 
-  const { isLoading, errorMessage, data } = fetchCategory;
-  return [isLoading, errorMessage, data];
+  const { isLoading, errorMessage, data, isNext } = fetchCategory;
+  return [isLoading, errorMessage, data, isNext];
 }
 
 export default useCategory;
